@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Collection - Premium Timepieces</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+        }
+        .heading-font {
+            font-family: 'Libre Baskerville', serif;
+        }
+        .watch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .cart-count {
+            top: -8px;
+            right: -8px;
+        }
+        .watch-image-container {
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+        .watch-image {
+            transition: transform 0.5s ease;
+        }
+        .watch-card:hover .watch-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <span class="heading-font text-2xl font-bold text-gray-800">TIMECRAFT</span>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Collections</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Stores</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Service</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="cart-button" class="text-gray-600 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            <span id="cart-count" class="cart-count absolute text-xs bg-black text-white rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                        <div id="cart-dropdown" class="hidden absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg overflow-hidden z-50">
+                            <div class="py-2">
+                                <div id="cart-items" class="max-h-64 overflow-y-auto"></div>
+                                <div id="cart-total" class="px-4 py-3 bg-gray-100 text-gray-700 border-t">Total: $0</div>
+                                <div class="px-4 py-3 bg-black">
+                                    <button class="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition">Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 text-white">
+        <div class="watch-image-container">
+            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Luxury watch collection display with multiple brands" class="w-full h-full object-cover object-center watch-image" />
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center">
+            <div class="container mx-auto px-6 py-24">
+                <h1 class="heading-font text-4xl md:text-6xl font-bold mb-4">Timeless Elegance</h1>
+                <p class="text-xl max-w-2xl mb-8">Discover exceptional timepieces from the world's finest watchmakers</p>
+                <button class="bg-transparent border border-white text-white px-8 py-3 rounded hover:bg-white hover:text-black transition duration-300">Explore Collections</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Watch Collection -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl font-bold text-center mb-12">Our Premium Collections</h2>
+            <div class="flex justify-center mb-12">
+                <button class="collection-filter mx-2 px-4 py-2 border-b-2 border-transparent hover:border-black focus:outline-none focus:border-black" data-collection="all">All</button>
+                <button class="collection-filter mx-2 px-4 py-2 border-b-2 border-transparent hover:border-black focus:outline-none focus:border-black" data-collection="smart">Smart Watches</button>
+                <button class="collection-filter mx-2 px-4 py-2 border-b-2 border-transparent hover:border-black focus:outline-none focus:border-black" data-collection="standard">Simple & Standard</button>
+            </div>
+            <div id="watch-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                <!-- Samsung Watches (Smart) -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="samsung">
+                    <div class="watch-image-container">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/in/2208/gallery/in-galaxy-watch5-44mm-sm-r910nzbainu-533186712?$684_547_PNG$" alt="Samsung Galaxy Watch5" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Galaxy Watch5</h3>
+                        <p class="text-gray-600 mb-4">44mm, Bluetooth, Sapphire Crystal</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$299.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="s1" data-name="Samsung Galaxy Watch5" data-price="299.99" data-image="https://images.samsung.com/is/image/samsung/p6pim/levant/2202/gallery/levant-galaxy-watch5-44mm-sm-r910nzkamid-thumb-530606516">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="samsung">
+                    <div class="watch-image-container">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/in/2307/gallery/in-galaxy-watch6-classic-r965-469944-sm-r965fzsains-537406435?$684_547_PNG$" alt="Samsung Galaxy Watch6 Classic" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Galaxy Watch6 Classic</h3>
+                        <p class="text-gray-600 mb-4">47mm, Rotating Bezel, LTE</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$429.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="s2" data-name="Samsung Galaxy Watch6 Classic" data-price="429.99" data-image="https://images.samsung.com/is/image/samsung/p6pim/levant/2307/gallery/levant-galaxy-watch6-classic-47mm-sm-r955fzkamid-thumb-537880171">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apple Watches (Smart) -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="apple">
+                    <div class="watch-image-container">
+                        <img src="https://iplanet.one/cdn/shop/files/Apple_Watch_Series_9_LTE_45mm_Midnight_Aluminium_Midnight_Sport_Band_PDP_Image_Position-2__en-IN.jpg?v=1698865666&width=823" alt="Apple Watch Series 8" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Apple Watch Series 9</h3>
+                        <p class="text-gray-600 mb-4">45mm, GPS + Cellular, Midnight</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$429.00</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="a1" data-name="Apple Watch Series 9" data-price="429.00" data-image="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MP6V3ref_VW_34FR+watch-45-alum-midnight-nc-8s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1683237043712">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="apple">
+                    <div class="watch-image-container">
+                        <img src="https://iplanet.one/cdn/shop/files/Apple_Watch_Ultra_2_49mm_Natural_Titanium_Ocean_Band_Navy_PDP_Image_Position_1__en-IN_575aceb9-2e8a-4e0d-968e-50305043dab4_360x.jpg?v=1727247556" alt="Apple Watch Ultra 2" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Apple Watch Ultra 2</h3>
+                        <p class="text-gray-600 mb-4">49mm, Titanium, Ocean Band</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$799.00</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="a2" data-name="Apple Watch Ultra 2" data-price="799.00" data-image="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT3V3ref_VW_34FR+watch-49-titanium-ultra2_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1694874658484">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rolex Watches (Standard) -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="rolex">
+                    <div class="watch-image-container">
+                        <img src="https://content.rolex.com/dam/2022-11/upright-bba/m126710blnr-0002.png?impolicy=main-configurator&imwidth=1600" alt="Rolex GMT-Master II" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">GMT-Master II</h3>
+                        <p class="text-gray-600 mb-4">Oystersteel, Jubilee bracelet</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$10,700</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="r1" data-name="Rolex GMT-Master II" data-price="10700" data-image="https://content.rolex.com/dam/2022-11/upright-bba/m126710blnr-0002.png?impolicy=main-configurator&imwidth=1600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="rolex">
+                    <div class="watch-image-container">
+                        <img src="https://content.rolex.com/dam/2022-11/upright-bba/m124300-0001.png?impolicy=main-configurator&imwidth=1600" alt="Rolex Oyster Perpetual 41" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Oyster Perpetual 41</h3>
+                        <p class="text-gray-600 mb-4">Oystersteel, Bright blue dial</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$5,900</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="r2" data-name="Rolex Oyster Perpetual 41" data-price="5900" data-image="https://content.rolex.com/dam/2022-11/upright-bba/m124300-0001.png?impolicy=main-configurator&imwidth=1600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Casio Watches (Standard) -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="casio">
+                    <div class="watch-image-container">
+                        <img src="https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/G/GA/GA2/ga-2100rl-1a/assets/GA-2100RL-1A_front.jpg.transform/main-visual-pc/image.jpg" alt="Casio G-Shock GA2100" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">G-Shock GA2100</h3>
+                        <p class="text-gray-600 mb-4">Analog-Digital, Carbon Core</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$110.00</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="c1" data-name="Casio G-Shock GA2100" data-price="110.00" data-image="https://www.casio.com/content/dam/casio/product-info/locales/us/en/timepiece/product/watch/G/GA/GA2100/GA2100-1A1/assets/GA2100-1A1.png.transform/main-visual-pc/image.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="casio">
+                    <div class="watch-image-container">
+                        <img src="https://justintime.in/cdn/shop/products/1fVk0BNiaaSeACM6O85VD6Eu-n76kNuJ7.jpg?v=1684137739&width=990" alt="Casio A1000MA" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">A1000MA</h3>
+                        <p class="text-gray-600 mb-4">Vintage Digital, Stainless Steel</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$149.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="c2" data-name="Casio A1000MA" data-price="149.99" data-image="https://www.casio.com/content/dam/casio/product-info/locales/us/en/timepiece/product/watch/A/AB/A1000/A1000MA-1.png.transform/main-visual-pc/image.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional watches to make 12 total (4 per brand) -->
+                <!-- Samsung -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="samsung">
+                    <div class="watch-image-container">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/in/2208/gallery/in-galaxy-watch5-pro-431073-sm-r925fzkainu-533190548?$684_547_PNG$" alt="Samsung Galaxy Watch5 Pro" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Galaxy Watch5 Pro</h3>
+                        <p class="text-gray-600 mb-4">45mm, Titanium, LTE</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$449.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="s3" data-name="Samsung Galaxy Watch5 Pro" data-price="449.99" data-image="https://images.samsung.com/is/image/samsung/p6pim/levant/2202/gallery/levant-galaxy-watch5-pro-45mm-sm-r925fzkamid-thumb-530606540">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="samsung">
+                    <div class="watch-image-container">
+                        <img src="https://image-us.samsung.com/us/watches/galaxy-watch6-classic/silver/R955-silver/1.jpg?$product-details-jpg$" alt="Samsung Galaxy Watch6" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Galaxy Watch6</h3>
+                        <p class="text-gray-600 mb-4">44mm, Bluetooth, Sapphire</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$329.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="s4" data-name="Samsung Galaxy Watch6" data-price="329.99" data-image="https://images.samsung.com/is/image/samsung/p6pim/levant/2307/gallery/levant-galaxy-watch6-44mm-sm-r935fzkamid-thumb-537880169">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apple -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="apple">
+                    <div class="watch-image-container">
+                        <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXM63ref_FV98_VW_34FR+watch-case-44-aluminum-starlight-nc-se_VW_34FR+watch-face-44-aluminum-starlight-se_VW_34FR?wid=5120&hei=3280&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=QVR6TmZRU2x1RjZIVW5wdDlyenB5RW5TeWJ6QW43NUFnQ2V4cmRFc1VnWURIZXhSOVNUU1hpL1hkOUNjbEVLTCsydHFDU0pvT1BSK2dOS3RYTkxwdzlGNnlaeXQ4NGFKQTAzc0NGeHR2aVp0aE9FQnlrZ00zbUdqcHZKNEpaMWJaS1ZRdWNPS3Q1RURqYVgyaEZJZmtYY0dmQWU1UUhxNENQZVRyQjk5ZnRCcVBpVENpMUluRnVNbld0T1NWSFh2cXlYK1hMV0U1ZW9xcCtlRHF3V3gyUWw1MXVoaC9rQ0tINDRNUEExR2JHRU5mTDhYbjVxRUx5MXNydDUvcjcyYQ" alt="Apple Watch SE" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Apple Watch SE</h3>
+                        <p class="text-gray-600 mb-4">44mm, GPS, Starlight</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$249.00</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="a3" data-name="Apple Watch SE" data-price="249.00" data-image="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT3F3ref_VW_34FR+watch-45-alum-starlight-nc-8s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1683237043709">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="smart" data-brand="apple">
+                    <div class="watch-image-container">
+                        <img src="https://www.imagineonline.store/cdn/shop/files/Apple_Watch_Series_8_GPS_45mm_Midnight_Aluminum_Midnight_Sport_Band_PDP_Image_Position-1__en-US.jpg?v=1698873071&width=823" alt="Apple Watch Series 8" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Apple Watch Series 8</h3>
+                        <p class="text-gray-600 mb-4">45mm, GPS, Silver</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$399.00</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="a4" data-name="Apple Watch Series 8" data-price="399.00" data-image="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT3U3ref_VW_34FR+watch-45-alum-silver-nc-8s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1683237043708">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rolex -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="rolex">
+                    <div class="watch-image-container">
+                        <img src="https://content.rolex.com/dam/2022-11/upright-bba/m126610ln-0001.png?impolicy=main-configurator&imwidth=1600" alt="Rolex Submariner Date" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Submariner Date</h3>
+                        <p class="text-gray-600 mb-4">Oystersteel, Black dial</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$9,100</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="r3" data-name="Rolex Submariner Date" data-price="9100" data-image="https://content.rolex.com/dam/2022-11/upright-bba/m126610ln-0001.png?impolicy=main-configurator&imwidth=1600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="rolex">
+                    <div class="watch-image-container">
+                        <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1200/v1/catalogue/2025/upright-c/m126503-0001" alt="Rolex Daytona" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Cosmograph Daytona</h3>
+                        <p class="text-gray-600 mb-4">Rolesor, Oyster bracelet</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$15,100</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="r4" data-name="Rolex Cosmograph Daytona" data-price="15100" data-image="https://content.rolex.com/dam/2022-11/upright-bba/m126503-0001.png?impolicy=main-configurator&imwidth=1600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Casio -->
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="casio">
+                    <div class="watch-image-container">
+                        <img src="https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-s108d-3av/assets/EFR-S108D-3AVU.png.transform/main-visual-pc/image.png" alt="Casio Edifice" class="w-full h-full object-cover object-center watch-image" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Edifice EFR-S108D</h3>
+                        <p class="text-gray-600 mb-4">Chronograph, Stainless Steel</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$129.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="c3" data-name="Casio Edifice EFR-S108D" data-price="129.99" data-image="https://www.casio.com/content/dam/casio/product-info/locales/us/en/timepiece/product/watch/E/EF/EFR-S108D-1AVUEF/assets/EFR-S108D-1AVUEF.png.transform/main-visual-pc/image.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="watch-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-collection="standard" data-brand="casio">
+                    <div class="watch-image-container">
+                        <img src="https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/F/F9/F91/F-91W-1/assets/F-91W-1_Seq1.png.transform/main-visual-pc/image.png" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold mb-2">Classic F91W</h3>
+                        <p class="text-gray-600 mb-4">Digital, Resin Band</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$19.99</span>
+                            <button class="add-to-cart bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition" data-id="c4" data-name="Casio Classic F91W" data-price="19.99" data-image="https://www.casio.com/content/dam/casio/product-info/locales/us/en/timepiece/product/watch/F/F91/F91W-1/assets/F91W-1.png.transform/main-visual-pc/image.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl font-bold text-center mb-12">Craftsmanship & Innovation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold mb-2">Precision Timekeeping</h3>
+                    <p class="text-gray-600">From quartz accuracy to mechanical excellence, we offer the finest in timekeeping technology.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold mb-2">Diverse Selection</h3>
+                    <p class="text-gray-600">From luxury mechanical to cutting-edge smartwatches, we have timepieces for every taste.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold mb-2">Iconic Design</h3>
+                    <p class="text-gray-600">Timeless aesthetics combined with functional excellence define our watch collection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="heading-font text-xl font-bold mb-4">TIMECRAFT</h3>
+                    <p class="text-gray-400">The premier destination for luxury and smart timepieces.</p>
+                </div>
+                <div>
+                    <h4 class="heading-font text-lg font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">All Watches</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Smart Watches</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Luxury Watches</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="heading-font text-lg font-bold mb-4">Brands</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Rolex</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Apple</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Samsung</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Casio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="heading-font text-lg font-bold mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Warranty</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+                <p>© 2023 Timecraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="heading-font text-2xl font-bold">Your Cart</h3>
+                <button id="close-cart" class="text-gray-600 hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="sidebar-cart-items" class="mb-6 border-b pb-6">
+                <!-- Cart items will be added here -->
+            </div>
+            <div class="mb-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span id="sidebar-subtotal" class="font-bold">$0</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Shipping</span>
+                    <span class="text-gray-600">Calculated at checkout</span>
+                </div>
+                <div class="flex justify-between text-lg mt-4">
+                    <span>Total</span>
+                    <span id="sidebar-total" class="font-bold">$0</span>
+                </div>
+            </div>
+            <button class="w-full bg-black text-white py-3 rounded hover:bg-gray-800 transition mb-4">Checkout</button>
+            <button class="w-full border border-black text-black py-3 rounded hover:bg-gray-100 transition">Continue Shopping</button>
+        </div>
+    </div>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        
+        // DOM elements
+        const cartCount = document.getElementById('cart-count');
+        const cartButton = document.getElementById('cart-button');
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const sidebarCart = document.getElementById('cart-sidebar');
+        const sidebarCartItems = document.getElementById('sidebar-cart-items');
+        const sidebarSubtotal = document.getElementById('sidebar-subtotal');
+        const sidebarTotal = document.getElementById('sidebar-total');
+        const closeCart = document.getElementById('close-cart');
+        
+        // Collection filter
+        const collectionFilters = document.querySelectorAll('.collection-filter');
+        const watchCards = document.querySelectorAll('.watch-card');
+        
+        // Initialize the cart from localStorage
+        function initCart() {
+            const savedCart = localStorage.getItem('watchCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        }
+        
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('watchCart', JSON.stringify(cart));
+        }
+        
+        // Update cart UI
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            if (totalItems > 0) {
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+            
+            // Update dropdown cart
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 p-4">Your cart is empty</p>';
+                cartTotal.textContent = 'Total: $0';
+                sidebarSubtotal.textContent = '$0';
+                sidebarTotal.textContent = '$0';
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between items-center p-4 hover:bg-gray-50';
+                    itemElement.innerHTML = `
+                        <div class="flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">${item.name}</h4>
+                                <p class="text-gray-600">$${item.price.toLocaleString()}</p>
+                                <div class="flex items-center mt-1">
+                                    <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="remove-btn text-red-500 hover:text-red-700" data-id="${item.id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    `;
+                    cartItems.appendChild(itemElement);
+                    
+                    // Update sidebar cart
+                    const sidebarItemElement = document.createElement('div');
+                    sidebarItemElement.className = 'flex justify-between items-center mb-4';
+                    sidebarItemElement.innerHTML = `
+                        <div class="flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">${item.name}</h4>
+                                <p class="text-gray-600">$${item.price.toLocaleString()}</p>
+                                <div class="flex items-center mt-1">
+                                    <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="font-bold">$${itemTotal.toLocaleString()}</div>
+                    `;
+                    sidebarCartItems.appendChild(sidebarItemElement);
+                });
+                
+                cartTotal.textContent = `Total: $${total.toLocaleString()}`;
+                sidebarSubtotal.textContent = `$${total.toLocaleString()}`;
+                sidebarTotal.textContent = `$${total.toLocaleString()}`;
+            }
+        }
+        
+        // Add item to cart
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            saveCart();
+            updateCart();
+        }
+        
+        // Remove item from cart
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            updateCart();
+        }
+        
+        // Update item quantity
+        function updateQuantity(id, action) {
+            const item = cart.find(item => item.id === id);
+            
+            if (item) {
+                if (action === 'increase') {
+                    item.quantity += 1;
+                } else if (action === 'decrease') {
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        removeFromCart(id);
+                        return;
+                    }
+                }
+                
+                saveCart();
+                updateCart();
+            }
+        }
+        
+        // Filter watches by collection
+        function filterWatches(collection) {
+            watchCards.forEach(card => {
+                if (collection === 'all' || card.dataset.collection === collection) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            initCart();
+            
+            // Add to cart
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const name = button.dataset.name;
+                    const price = parseFloat(button.dataset.price);
+                    const image = button.dataset.image;
+                    
+                    addToCart(id, name, price, image);
+                    
+                    // Show cart sidebar
+                    sidebarCart.classList.remove('translate-x-full');
+                });
+            });
+            
+            // Toggle cart dropdown
+            cartButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                cartDropdown.classList.toggle('hidden');
+            });
+            
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', () => {
+                cartDropdown.classList.add('hidden');
+            });
+            
+            // Cart item actions
+            document.addEventListener('click', (e) => {
+                // Quantity buttons
+                if (e.target.classList.contains('quantity-btn') || e.target.closest('.quantity-btn')) {
+                    const button = e.target.classList.contains('quantity-btn') ? e.target : e.target.closest('.quantity-btn');
+                    const id = button.dataset.id;
+                    const action = button.dataset.action;
+                    
+                    updateQuantity(id, action);
+                }
+                
+                // Remove buttons
+                if (e.target.classList.contains('remove-btn') || e.target.closest('.remove-btn')) {
+                    const button = e.target.classList.contains('remove-btn') ? e.target : e.target.closest('.remove-btn');
+                    const id = button.dataset.id;
+                    
+                    removeFromCart(id);
+                }
+            });
+            
+            // Collection filter
+            collectionFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    const collection = filter.dataset.collection;
+                    filterWatches(collection);
+                    
+                    // Update active filter
+                    collectionFilters.forEach(f => {
+                        f.classList.remove('border-black');
+                        f.classList.add('border-transparent');
+                    });
+                    filter.classList.add('border-black');
+                    filter.classList.remove('border-transparent');
+                });
+            });
+            
+            // Cart sidebar
+            cartButton.addEventListener('click', () => {
+                sidebarCart.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeCart.addEventListener('click', () => {
+                sidebarCart.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            });
+            
+            // Set default filter
+            document.querySelector('.collection-filter[data-collection="all"]').classList.add('border-black');
+            document.querySelector('.collection-filter[data-collection="all"]').classList.remove('border-transparent');
+        });
+    </script>
+</body>
+</html>
